@@ -3,10 +3,31 @@
 @tailwind utilities;
 
 .img-overlay{
-    visibility: hidden;
-    transition: all linear .3s;
+    opacity: 0;
+    transition: all ease-in .3s, transform ease-in .3s;
 }
 
+
 .img-container:hover .img-overlay{
-    visibility: visible;
+    opacity: 1;
+}
+
+.img-container img{
+    transition: transform ease-in .2s;
+}
+
+.img-container:hover img{
+    transform: scale(1.05);
+}
+
+.my-container{
+    @apply w-[90vw] lg:w-[85vw] mx-auto
+}
+
+.pri-btn{
+    @apply px-4 py-1 bg-indigo-600 text-white rounded-md text-lg font-semibold
+}
+
+.red-btn{
+    @apply px-4 py-1 bg-red-500 text-white rounded-md text-lg font-semibold
 }

@@ -1,5 +1,5 @@
 import { DndContext, closestCenter } from '@dnd-kit/core'
-import { SortableContext, rectSortingStrategy } from '@dnd-kit/sortable'
+import { SortableContext, arrayMove, rectSortingStrategy } from '@dnd-kit/sortable'
 
 import { useState } from 'react';
 
@@ -30,11 +30,12 @@ const App = () => {
     overEl.classList.add('z-10')
     if (active.id !== over.id) {
       setLanguages((items) => {
-        const updatedItems = [...items];
+        // const updatedItems = [...items];
         const activeIndex = items.indexOf(active.id);
         const overIndex = items.indexOf(over.id);
-        [updatedItems[activeIndex], updatedItems[overIndex]] = [updatedItems[overIndex], updatedItems[activeIndex]];
-        return updatedItems;
+        return arrayMove(items, activeIndex, overIndex)
+        // [updatedItems[activeIndex], updatedItems[overIndex]] = [updatedItems[overIndex], updatedItems[activeIndex]];
+        // return updatedItems;
       });
     }
   }
