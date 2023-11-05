@@ -59,6 +59,11 @@ const Gallery = () => {
         }
     }
 
+    const handleDelete = () => {
+        const filteredImages = images.filter(img => !selectedImgs.includes(img))
+        setImages(filteredImages)
+        setSelectedImg([])
+    }
 
     return (
         <DndContext
@@ -70,13 +75,13 @@ const Gallery = () => {
                 strategy={rectSortingStrategy}
             >
                 <div>
-                    <div className="my-container py-2 flex justify-center gap-20 items-center">
+                    <div className="my-container py-5 flex justify-around gap-20 items-center">
                         <div>
-                            <p>{selectedImgs.length} selected images</p>
+                            <p className='font-semibold uppercase text-xl text-gray-600'><span className='text-red-500'>{selectedImgs.length}</span> Files selected</p>
                         </div>
-                        <div>
-                            <button onClick={handleDelete} className="red-btn">Delete</button>
-                            <button onClick={() => setSelectedImg([])} className='pri-btn'>Deselect all</button>
+                        <div className='space-x-3'>
+                            <button disabled={selectedImgs.length === 0} onClick={handleDelete} className="red-btn">Delete</button>
+                            <button disabled={selectedImgs.length === 0} onClick={() => setSelectedImg([])} className='pri-btn'>Deselect all</button>
                         </div>
                     </div>
                     <div className='grid lg:grid-cols-5 md:grid-cols-3 gap-2 my-container pb-4'>
@@ -95,7 +100,7 @@ const Gallery = () => {
                             })
                         }
                         {/* ========upload image======== */}
-                        <div onClick={handleUpaloadClick} className='h-full w-full text-gray-600 cursor-pointer bg-gray-200 flex flex-col justify-center items-center'>
+                        <div onClick={handleUpaloadClick} className='h-full w-full min-h-[200px] min-w-[200px] text-gray-600 cursor-pointer bg-gray-200 flex flex-col justify-center items-center'>
                             <input
                                 onInputCapture={handleImageUpload}
                                 ref={fileRef}

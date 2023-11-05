@@ -29,10 +29,10 @@ const SingleImage = ({ imgData }) => {
     }
 
     return (
-        <div className={`${index === 0 ? 'col-span-2 row-span-2' : ''} bg-gray-200 border img-container cursor-pointer overflow-hidden relative`} ref={setNodeRef} {...listeners} style={style}>
+        <div className={`${index === 0 ? 'col-span-2 row-span-2' : ''} bg-gray-200 border img-container cursor-pointer overflow-hidden relative min-h-[200px] min-w-[200px]`} ref={setNodeRef} {...listeners} style={style}>
             {
                 typeof (img) === 'string' ? <img src={img} alt={`image`} className="object-cover h-full w-full" /> :
-                    <img src={URL.createObjectURL(img)}></img>
+                    <img className="h-full w-full object-cover" src={URL.createObjectURL(img)}></img>
             }
             {
                 selectedImgs.includes(img) && <input type="checkbox" defaultChecked={selectedImgs.includes(img)} className="h-5 w-5 absolute top-5 left-5" />

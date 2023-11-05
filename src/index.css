@@ -28,6 +28,14 @@
     @apply px-4 py-1 bg-indigo-600 text-white rounded-md text-lg font-semibold
 }
 
+.pri-btn:disabled{
+    opacity: .5;
+}
+
 .red-btn{
     @apply px-4 py-1 bg-red-500 text-white rounded-md text-lg font-semibold
+}
+
+.red-btn:disabled{
+opacity: .5;
 }
